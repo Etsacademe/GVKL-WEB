@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GVKL WEB - Where Creativity Meets Code</title>
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     /* Reset and base styles */
     * {
@@ -97,18 +98,25 @@
     .dropdown-menu {
       display: none;
       position: absolute;
-      background-color: #333;
+      background-color: #171717;
       list-style: none;
+      color: #ffffff !important;;
       padding: 10px 0;
+      padding-bottom: 20px;
       min-width: 180px;
       top: 100%;
       z-index: 100;
+      border-radius: 10px;
     }
 
     .dropdown-menu li a {
       display: block;
       padding: 10px 20px;
       color: #fff;
+    }
+    .dropdown-menu li a:hover {
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.1); /* Optional: subtle background on hover */
     }
 
     .nav-links li:hover .dropdown-menu {
@@ -146,7 +154,7 @@
     .hero {
       padding: 100px 20px 60px;
       text-align: center;
-      background: linear-gradient(white, #f9f9f9);
+      margin-top: -75px;
     }
 
     .hero .container {
@@ -180,6 +188,12 @@
       background-color: #171717;
       color: #f8f8f9;
     }
+    .btnblack:hover
+    {
+      background-color: #ffffff;
+      color: #171717;
+    }
+  
 
     .btnoutline {
       background-color: transparent;
@@ -193,14 +207,17 @@
       padding: 60px 20px;
       max-width: 1200px;
       margin: 0 auto;
+      margin-top: -90px;
     }
 
     .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 40px;
-      justify-items: center;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Forces 3 columns */
+        gap: 40px;
+        justify-items: center;
+        margin-top: 40px;
     }
+
 
     .feature-card {
       display: flex;
@@ -208,24 +225,38 @@
       align-items: center;
       text-align: center;
       max-width: 220px;
+      padding: 10px;
+      border-radius: 15px;
+      
+      
+    }
+    .feature-card:hover
+    {
+      background-color: #171717;
+      color: white;
+      transform: scale(1.05);
+  
     }
 
     .feature-card img {
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       padding: 10px;
       background-color: #f5f5f5;
       border-radius: 8px;
     }
 
+
     .feature-card h3 {
       margin-top: 15px;
       font-size: 1rem;
+      padding: 10px;
     }
 
     .feature-card p {
       font-size: 0.9rem;
       color: #666;
+      padding: 10px;
     }
 
     /* Responsive */
@@ -263,27 +294,68 @@
   }
 
   .dropdown-menu {
-    position: static;
-    background-color: transparent;
-    box-shadow: none;
+  position: static;
+  display: none;
+  background-color: #171717 !important; /* Ensure dark background */
+  color: #ffffff !important;            /* White text */
+  box-shadow: none;
+  opacity: 1;
+  transform: none;
+  padding: 10px 0;
+}
+
+.dropdown-menu li a {
+  color: #ffffff !important; /* Force white text on links */
+  display: block;
+  padding: 10px 20px;
+}
+
+.dropdown-menu li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+.dropdown-menu.active {
     display: block;
     opacity: 1;
-    transform: none;
+    transform: translateY(0);
   }
+ 
+
 }
 
 /* Hamburger icon active state fix for visual 'X' */
+.menu-toggle {
+  width: 30px;
+  height: 40px;
+  position: relative;
+  cursor: pointer;
+}
+
 .menu-toggle span {
+  position: absolute;
+  left: 0;
+  width: 100%;
   height: 3px;
-  width: 25px;
-  background: #171717;
-  margin: 4px 0;
+  background-color: #171717;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
+.menu-toggle span:nth-child(1) {
+  top: 6px;
+}
+
+.menu-toggle span:nth-child(2) {
+  top: 13px;
+}
+
+.menu-toggle span:nth-child(3) {
+  top: 20px;
+}
+
 .menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  top: 13px;
+  transform: rotate(45deg);
 }
 
 .menu-toggle.active span:nth-child(2) {
@@ -291,8 +363,10 @@
 }
 
 .menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+  top: 13px;
+  transform: rotate(-45deg);
 }
+
 
     @media (max-width: 480px) {
       .brand img {
@@ -316,6 +390,64 @@
         width: 100%;
       }
     }
+    /* For tablets (769px to 1024px) */
+@media (max-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-container,
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-links {
+    justify-content: center;
+  }
+
+  .footer-links div {
+    margin: 10px 20px;
+  }
+}
+
+/* For small devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-links div {
+    margin: 15px 0;
+  }
+}
+
+/* For extra small screens (max-width: 480px) */
+@media (max-width: 480px) {
+  .footer-brand h2 {
+    font-size: 18px;
+  }
+
+  .footer-links h4 {
+    font-size: 16px;
+  }
+
+  .footer-links ul li a {
+    font-size: 13px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+    padding: 10px 15px;
+  }
+}
+
 
     /* Animated Background */
     @keyframes cube {
@@ -353,15 +485,224 @@
 
     /* Cube Positions */
     .background li:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
-    .background li:nth-child(2) { left: 30%; top: 50%; animation-delay: 2s; border-color: white; }
-    .background li:nth-child(3) { left: 60%; top: 30%; animation-delay: 4s; }
+    .background li:nth-child(2) { left: 30%; top: 50%; animation-delay: 2s; border-color: #dfdfe0; }
+    .background li:nth-child(3) { left: 60%; top: 30%; animation-delay: 4s;  }
     .background li:nth-child(4) { left: 90%; top: 70%; animation-delay: 6s; }
-    .background li:nth-child(5) { left: 25%; top: 10%; animation-delay: 8s; border-color: white; }
+    .background li:nth-child(5) { left: 25%; top: 10%; animation-delay: 8s; border-color: #dfdfe0; }
     .background li:nth-child(6) { left: 70%; top: 90%; animation-delay: 10s; }
     .background li:nth-child(7) { left: 15%; top: 80%; animation-delay: 12s; }
     .background li:nth-child(8) { left: 40%; top: 25%; animation-delay: 14s; }
-    .background li:nth-child(9) { left: 80%; top: 40%; animation-delay: 16s; border-color: white; }
+    .background li:nth-child(9) { left: 80%; top: 40%; animation-delay: 16s; border-color: #dfdfe0; }
     .background li:nth-child(10) { left: 95%; top: 85%; animation-delay: 18s; }
+
+    .subtitle
+    {
+      padding: 15px;
+      text-align: center;
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+
+    /* Footer */
+    .footer {
+  background-color: #171717;
+  padding: 60px 20px 30px;
+  font-family: sans-serif;
+  color: #ffffff;
+  border-top: 1px solid #eee;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+}
+
+.footer-brand {
+  flex: 1 1 300px;
+  margin-bottom: 30px;
+}
+
+.footer-brand h2 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-brand p {
+  color: #f8f8f8;
+  max-width: 300px;
+}
+.social-icons
+{
+  margin-top: 20px;
+}
+
+.social-icons a {
+ 
+  margin-right: 15px;
+  font-size: 18px;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #000;
+}
+
+.footer-links {
+  display: flex;
+  flex: 2 1 600px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-links div {
+  min-width: 150px;
+  margin-bottom: 20px;
+}
+
+.footer-links h4 {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+  text-decoration: none;
+  color: #444;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+  color: #000;
+}
+
+.footer-bottom {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: 14px;
+  color: #777;
+}
+
+.footer-bottom-links a {
+  margin-left: 20px;
+  color: #777;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+  color: #000;
+}
+#back-to-top {
+    position: fixed; /* Fixed position */
+    bottom: 20px; /* Distance from the bottom */
+    right: 20px; /* Distance from the right */
+    display: none; /* Hidden by default */
+    background-color: #666; /* Button background color */
+    color: #fff; /* Text color */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding for the button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover effect for the button */
+#back-to-top:hover {
+    background-color: #666; /* Change background on hover */
+    transform: translateY(-5px); /* Slight lift effect on hover */
+}
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-brand,
+  .footer-links {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .footer-links {
+    justify-content: center;
+  }
+
+  .footer-links div {
+    margin: 10px 15px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 10px;
+  }
+
+  .footer-bottom-links {
+    margin-top: 10px;
+  }
+
+  .footer-bottom-links a {
+    margin: 0 10px;
+  }
+
+  #back-to-top {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+  .footer-links div {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-icons a {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+
+  #back-to-top {
+    right: 10px;
+    bottom: 10px;
+    padding: 6px 12px;
+    color: white;
+    background-color: #171717;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -392,7 +733,10 @@
         <ul class="dropdown-menu">
           <li><a href="/Web">Web Development</a></li>
           <li><a href="/App">App Development</a></li>
+          <li><a href="/App">Cloud Services</a></li>
+          <li><a href="/App">Domain and Hosting</a></li>
           <li><a href="/Digital">Digital Marketing</a></li>
+          <li><a href="/Digital">Pc Build</a></li>
         </ul>
       </li>
       <li><a href="/About">ABOUT US</a></li>
@@ -415,43 +759,77 @@
 
   <!-- Features Section -->
   <div class="container" id="servicescroll">
-    <h1>Features at a Glance</h1>
-    <p class="subtitle">Streamline your workflow, boost productivity, and scale your business.</p>
+    <h1>Our Premium Services</h1>
+    <p class="subtitle">Unlock your business potential with expert web and app development, custom PC builds, and seamless domain hosting. Our cutting-edge cloud solutions and targeted digital marketing strategies are designed to drive your success.</p>
     <div class="features-grid">
       <div class="feature-card">
         <img src="Images/Web.png" alt="Web Dev" />
         <h3>Website Development</h3>
         <p>Modern, responsive websites.</p>
+        <button class="btnblack">View More</button>
       </div>
       <div class="feature-card">
         <img src="Images/App.png" alt="App Dev" />
         <h3>App Development</h3>
         <p>Scalable cross-platform apps.</p>
+         <button class="btnblack">View More</button>
       </div>
       <div class="feature-card">
         <img src="Images/Cloud.png" alt="Cloud" />
         <h3>Cloud Services</h3>
         <p>Flexible cloud infrastructure.</p>
+        <button class="btnblack">View More</button>
       </div>
       <div class="feature-card">
         <img src="Images/Domain.png" alt="Hosting" />
         <h3>Domain & Hosting</h3>
         <p>Reliable hosting solutions.</p>
+        <button class="btnblack">View More</button>
       </div>
       <div class="feature-card">
-        <img src="https://img.icons8.com/ios-filled/50/000000/automation.png" alt="Automation" />
-        <h3>Automation</h3>
+        <img src="Images/Digital.png" alt="Automation" />
+        <h3>Digital Marketing</h3>
         <p>Save time with smart workflows.</p>
+        <button class="btnblack">View More</button>
       </div>
       <div class="feature-card">
-        <img src="https://img.icons8.com/ios-filled/50/000000/lock.png" alt="Security" />
-        <h3>Security</h3>
+        <img src="Images/PC Build.png" alt="Security" />
+        <h3>PC Buliding</h3>
         <p>Encryption and compliance built-in.</p>
+        <button class="btnblack">View More</button>
       </div>
     </div>
   </div>
 
+
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h2>GVKL WEB</h2>
+      <p>159,Amman Complex,Mettur Main Road,Erode</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+  <div class="footer-bottom">
+    <p>© 2024 GVKL WEB. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Terms and Conditions</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+  
+</footer>
+<button id="back-to-top" onclick="scrollToTop()">↑</button>
+
   <!-- JS for Mobile Nav Toggle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     const toggle = document.getElementById("menu-toggle");
     const navLinks = document.getElementById("nav-links");
@@ -460,6 +838,15 @@
       toggle.classList.toggle("active");
       navLinks.classList.toggle("active");
     });
+    window.onscroll = function() {
+    const backToTopButton = document.getElementById('back-to-top');
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        backToTopButton.style.display = 'block'; // Show the button
+    } else {
+        backToTopButton.style.display = 'none'; // Hide the button
+    }
+};
+
   </script>
   
 </body>
